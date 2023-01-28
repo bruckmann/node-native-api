@@ -1,6 +1,6 @@
 import { createServer } from 'node:http'
 
-import { handler } from "./handler"
+import { handler } from './handler'
 
 const PORT = process.env.PORT || 3030
 
