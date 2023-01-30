@@ -1,6 +1,6 @@
 import { IncomingMessage, ServerResponse } from 'node:http'
 
-import { routes as movieRoutes } from './movie'
+import { routes as movieRoutes } from './movies'
 
 export const routes = {
   ...movieRoutes(),
