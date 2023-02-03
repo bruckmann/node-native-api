@@ -1,18 +1,28 @@
 import { once } from 'events'
-import { createReadStream } from 'fs'
 import { IncomingMessage, ServerResponse } from 'http'
-import { join } from 'path'
+import {
+  PAGINATION_LIMIT_DEFAULT_VALUE,
+  PAGINATION_OFFSET_DEFAULT_VALUE,
+} from '../../constants/pagionation'
+import { Movie } from '../../models/movie'
 
 export const controllers = {
   GET_MOVIES: async (request: IncomingMessage, response: ServerResponse) => {
-    const filePath = join(__dirname, '../../data/NetFlix.csv')
+    const { offset, limit } = request.headers
 
-    const file = createReadStream(filePath).on('data', (row) => {
-      console.log(row.toString())
-    })
+    const paginationConfig = {
+      skip: PAGINATION_OFFSET_DEFAULT_VALUE,
+      limit: PAGINATION_LIMIT_DEFAULT_VALUE,
+    }
 
-    const res = { repsonse: 'Hello Dude, this is a movie api!' }
-    response.write(JSON.stringify(res))
+    if (offset && limit) {
+      paginationConfig.skip = +offset
+      paginationConfig.limit = +limit
+    }
+
+    const movies = await Movie.find({}, null, paginationConfig)
+
+    response.write(JSON.stringify(movies))
     return response.end()
   },
   POST: async (request: IncomingMessage, response: ServerResponse) => {
