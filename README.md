@@ -59,7 +59,5 @@ To run tests, run the following command
 
 ## TO-DO
 
-- [] Add tests to the existent functions
-- [] Create the movies:post logic to registrate a movie
-- [] Create the Dockerfile and docker-compose file to the services
+- [] Fix the statusCode on return of reponse
 

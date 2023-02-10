@@ -1,33 +1,36 @@
-import { once } from 'events'
 import { IncomingMessage, ServerResponse } from 'http'
-import {
-  PAGINATION_LIMIT_DEFAULT_VALUE,
-  PAGINATION_OFFSET_DEFAULT_VALUE,
-} from '../../constants/pagionation'
-import { Movie } from '../../models/movie'
+import { IMovieRepositorie } from '../../interfaces'
 
-export const controllers = {
-  GET_MOVIES: async (request: IncomingMessage, response: ServerResponse) => {
-    const { offset, limit } = request.headers
+export class MovieController {
+  _movieRepositorie: IMovieRepositorie
 
-    const paginationConfig = {
-      skip: PAGINATION_OFFSET_DEFAULT_VALUE,
-      limit: PAGINATION_LIMIT_DEFAULT_VALUE,
+  constructor(movieRepositorie: IMovieRepositorie) {
+    this._movieRepositorie = movieRepositorie
+  }
+
+  async getMovies(
+    request: IncomingMessage,
+    response: ServerResponse,
+  ): Promise<ServerResponse<IncomingMessage>> {
+    const { skip, limit } = request.headers
+
+    let pagination = {}
+    if (skip && limit) {
+      pagination = {
+        skip,
+        limit,
+      }
     }
 
-    if (offset && limit) {
-      paginationConfig.skip = +offset
-      paginationConfig.limit = +limit
+    try {
+      const movies = this._movieRepositorie.getAllMovies(pagination)
+      response.write(JSON.stringify(movies))
+      return response.end()
+    } catch (error) {
+      console.error(error)
+      const errorResponse = { message: 'Error to bring your data, try later' }
+      response.write(JSON.stringify(errorResponse))
+      return response.end()
     }
-
-    const movies = await Movie.find({}, null, paginationConfig)
-
-    response.write(JSON.stringify(movies))
-    return response.end()
-  },
-  POST: async (request: IncomingMessage, response: ServerResponse) => {
-    const data = once(request, 'data')
-    response.write(data)
-    return response.end()
-  },
+  }
 }

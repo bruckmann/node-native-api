@@ -1,17 +1,6 @@
 import { Schema, model } from 'mongoose'
+import { Movie } from '../../types'
 
-const movieSchema = new Schema({
-  show_id: String,
-  type: String,
-  title: String,
-  cast: String,
-  country: String,
-  date_added: String,
-  release_year: String,
-  rating: String,
-  duration: String,
-  genres: String,
-  description: String,
-})
+const movieSchema = new Schema<Movie>({})
 
-export const Movie = model('movie', movieSchema)
+export const MovieModel = model('Movie', movieSchema)

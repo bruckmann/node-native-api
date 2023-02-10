@@ -1,3 +1,3 @@
-import { controllers as moviesControllers } from './movies'
+import { MovieController } from './movies'
 
-export { moviesControllers }
+export { MovieController }

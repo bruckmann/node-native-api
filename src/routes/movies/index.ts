@@ -1,6 +1,10 @@
-import { moviesControllers } from '../../controllers'
+import { MovieController } from '../../controllers'
+import { MovieModel } from '../../models'
+import { MovieRepositorie } from '../../repositories/movies'
+
+const movieRepositorie = new MovieRepositorie(MovieModel)
+const movieController = new MovieController(movieRepositorie)
 
 export const routes = () => ({
-  '/movies:get': moviesControllers.GET_MOVIES,
-  '/movies:post': moviesControllers.POST,
+  '/movies:get': movieController.getMovies,
 })
