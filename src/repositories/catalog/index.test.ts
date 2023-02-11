@@ -1,12 +1,12 @@
 import { strictEqual } from 'node:assert'
 import { describe, it, beforeEach, mock } from 'node:test'
-import { MovieModel } from '../../models'
-import { Movie } from '../../types'
-import { MovieRepositorie } from '.'
+import { CatalogModel } from '../../models'
+import { Catalog } from '../../types'
+import { CatalogRepository } from '.'
 
 describe('MovieRepositorie', () => {
   describe('GetAllMovies', () => {
-    const moviesMock: Movie[] = [
+    const catalogMock: Catalog[] = [
       {
         show_id: '123',
         title: 'Top Gun',
@@ -25,15 +25,15 @@ describe('MovieRepositorie', () => {
     ]
 
     beforeEach(() => {
-      MovieModel.find = mock.fn(() => {
-        return moviesMock
+      CatalogModel.find = mock.fn(() => {
+        return catalogMock
       })
     })
 
     it('Should return all Movies', async () => {
-      const movieRepositorie = new MovieRepositorie(MovieModel)
-      const movies = await movieRepositorie.getAllMovies()
-      strictEqual(movies, moviesMock)
+      const catalogRepository = CatalogRepository(CatalogModel)
+      const catalog = await catalogRepository.getCatalog()
+      strictEqual(catalog, catalogMock)
     })
   })
 })

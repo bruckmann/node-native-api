@@ -1,9 +1,9 @@
 import { IncomingMessage, ServerResponse } from 'http'
 
-import { routes as movieRoutes } from './movies'
+import { routes as CatalogRoutes } from './catalog'
 
 export const routes = {
-  ...movieRoutes(),
+  ...CatalogRoutes(),
   default: (request: IncomingMessage, response: ServerResponse) => {
     response.writeHead(404)
     response.write("Sorry dude, this route doest't exists :( ")

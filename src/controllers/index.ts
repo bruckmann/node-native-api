@@ -1,3 +1,3 @@
-import { MovieController } from './movies'
+import { CatalogController } from './catalog'
 
-export { MovieController }
+export { CatalogController }

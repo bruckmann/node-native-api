@@ -1,4 +1,4 @@
-import { Movie, MovieModel } from './Movie'
+import { Catalog, CatalogModel } from './Movie'
 import { Pagination } from './Pagination'
 
-export { MovieModel, Movie, Pagination }
+export { CatalogModel, Catalog, Pagination }

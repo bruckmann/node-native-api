@@ -1,6 +1,6 @@
 import { Model } from 'mongoose'
 
-export type Movie = {
+export type Catalog = {
   show_id: string
   type?: string
   title: string
@@ -14,4 +14,4 @@ export type Movie = {
   description?: string
 }
 
-export type MovieModel = Model<Movie>
+export type CatalogModel = Model<Catalog>

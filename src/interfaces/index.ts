@@ -1,3 +1,3 @@
-import { IMovieRepositorie } from './Movie'
+import { CatalogRepository } from './Catalog'
 
-export { IMovieRepositorie }
+export { CatalogRepository }

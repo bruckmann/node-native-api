@@ -1,3 +1,3 @@
-import { MovieModel } from './movie'
+import { CatalogModel } from './catalog'
 
-export { MovieModel }
+export { CatalogModel }

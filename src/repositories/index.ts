@@ -1,3 +1,3 @@
-import { MovieRepositorie } from './movies'
+import { CatalogRepository } from './catalog'
 
-export { MovieRepositorie }
+export { CatalogRepository }
