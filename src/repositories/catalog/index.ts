@@ -1,10 +1,6 @@
+import { DEFAULT_PAGINATION_SETTINGS } from '../../constants'
 import { CatalogRepository as ICatalogRepository } from '../../interfaces'
 import { CatalogModel, Pagination } from '../../types'
-
-export const DEFAULT_PAGINATION_SETTINGS = {
-  skip: 0,
-  limit: 10,
-}
 
 export const CatalogRepository = (catalogModel: CatalogModel): ICatalogRepository => {
   return {
