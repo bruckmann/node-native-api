@@ -1,2 +1,4 @@
-export const PAGINATION_OFFSET_DEFAULT_VALUE = 0
-export const PAGINATION_LIMIT_DEFAULT_VALUE = 10
+export const DEFAULT_PAGINATION_SETTINGS = {
+  skip: 0,
+  limit: 10,
+}

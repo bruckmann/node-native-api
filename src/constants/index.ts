@@ -1,0 +1,4 @@
+import { DB_NAME, COLLECTION_NAME } from './database'
+import { DEFAULT_PAGINATION_SETTINGS } from './pagination'
+
+export { DB_NAME, COLLECTION_NAME, DEFAULT_PAGINATION_SETTINGS }
