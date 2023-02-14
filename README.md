@@ -61,3 +61,4 @@ To run tests, run the following command
 - [ ] Fix the statusCode on return of reponse
 - [ ] Split catalog into two types: Catalog and MACTS (MOVIES, ANIMES, COMICS AND TVSERIES) 
 - [ ] Create a Dockerfile and docker-compose file to run all the application inside containers
+- [ ] Decrease numbers of retry to connect on the databas
